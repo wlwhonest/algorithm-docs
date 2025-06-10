@@ -51,6 +51,15 @@
     .sidebar {
       font-size: 15px;
     }
+    #giscus-container {
+    margin-top: 4em;
+    padding: 1.5em;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #ddd;
+  }
+
   </style>
 </head>
 <body>
@@ -102,22 +111,24 @@
     ]);
   </script>
 
-  <!-- Giscus 评论系统（可选） -->
-  <script src="https://giscus.app/client.js"
-          data-repo="wlwhonest/algorithm-docs"
-          data-repo-id="R_kgDOO5Dcjw"
-          data-category="General"
-          data-category-id="DIC_kwDOO5Dcj84CrR_K"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
-  </script>
+  <!-- 新增：评论容器 -->
+  <div id="giscus-container">
+    <script src="https://giscus.app/client.js"
+            data-repo="wlwhonest/algorithm-docs"
+            data-repo-id="R_kgDOO5Dcjw"
+            data-category="General"
+            data-category-id="DIC_kwDOO5Dcj84CrR_K"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
 
 </body>
 </html>
