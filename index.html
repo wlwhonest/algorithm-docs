@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- 样式与主题 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css">
-  <script src="//cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
 
-  <!-- 自定义美化样式 -->
+  <!-- Prism 高颜值代码框 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css">
+
   <style>
     body {
       font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -28,65 +29,35 @@
       padding-bottom: 0.4em;
     }
 
-    blockquote {
-      background: #f9f9f9;
-      border-left: 4px solid #42b983;
-      padding: 1em;
-      margin: 1.5em 0;
+    /* Prism 风格代码框卡片样式 */
+    pre.line-numbers {
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding-top: 1.5em;
+      background: #f8f8f8;
     }
 
-    code {
-      background: #f2f2f2;
-      padding: 0.2em 0.4em;
+    pre.line-numbers::before {
+      content: attr(data-lang);
+      position: absolute;
+      top: 0.4em;
+      right: 1em;
+      font-size: 13px;
+      background: #eee;
+      color: #333;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: sans-serif;
+    }
+
+    code:not(pre code) {
+      background: #f1f1f1;
+      color: #333;
+      padding: 2px 6px;
       border-radius: 4px;
       font-size: 90%;
     }
-
-    pre > code {
-      background: #1e1e1e !important;
-      color: #f8f8f2;
-      border-radius: 6px;
-      font-size: 14px;
-      padding: 1em;
-    }
-
-    .sidebar {
-      font-size: 15px;
-    }
-    #giscus-container {
-    margin-top: 4em;
-    padding: 1.5em;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    border-top: 1px solid #ddd;
-  }
-    /* 美化代码块整体 */
-  pre > code {
-    background: #2d2d2d !important;
-    color: #f8f8f2;
-    font-size: 15px;
-    border-radius: 8px;
-    padding: 1.2em;
-    line-height: 1.6;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    overflow-x: auto;
-  }
-
-  /* 可选：设置代码字体 */
-  code, pre code {
-    font-family: 'Fira Code', 'Courier New', monospace;
-  }
-
-  /* Markdown inline `code` 标签优化 */
-  code:not(pre code) {
-    background: #f1f1f1;
-    color: #333;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 90%;
-  }
-
   </style>
 </head>
 <body>
@@ -113,56 +84,26 @@
           ...window.markedKatex()
         }
       },
-      plugins: [],
-      doneEach() {
-      const comment = document.getElementById('giscus-container');
-      if (comment) comment.remove();
-
-      const giscus = document.createElement('script');
-      giscus.src = "https://giscus.app/client.js";
-      giscus.setAttribute("data-repo", "wlwhonest/algorithm-docs");
-      giscus.setAttribute("data-repo-id", "R_kgDOO5Dcjw");
-      giscus.setAttribute("data-category", "General");
-      giscus.setAttribute("data-category-id", "DIC_kwDOO5Dcj84CrR_K");
-      giscus.setAttribute("data-mapping", "pathname");
-      giscus.setAttribute("data-reactions-enabled", "1");
-      giscus.setAttribute("data-theme", "preferred_color_scheme");
-      giscus.setAttribute("data-lang", "zh-CN");
-      giscus.setAttribute("data-input-position", "bottom");
-      giscus.crossOrigin = "anonymous";
-      giscus.async = true;
-
-      const container = document.createElement('div');
-      container.id = 'giscus-container';
-      container.style = 'margin-top: 3em; padding-top: 1em; border-top: 1px solid #eee;';
-
-      container.appendChild(giscus);
-      document.querySelector('.content').appendChild(container);
-    }
+      plugins: []
     }
   </script>
 
-  <!-- 主库和插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/docsify-themeable.min.js"></script>
+  <!-- Docsify 核心 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/docsify-themeable.min.js"></script>
+
+  <!-- Prism 高亮支持 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
   <!-- Katex 支持 -->
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@5.0.2/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@3.0.1/lib/index.umd.min.js"></script>
-
-  <!-- 提示框插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts"></script>
-  <script>
-    window.$docsify.plugins = [].concat(window.$docsify.plugins || [], [
-      window.FlexibleAlerts.create()
-    ]);
-  </script>
-
-
 </body>
 </html>
