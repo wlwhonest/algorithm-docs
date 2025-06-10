@@ -10,32 +10,44 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
 
+  <!-- 自定义美化样式 -->
   <style>
     body {
       font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      line-height: 1.75;
       font-size: 16px;
-      background-color: var(--theme-background);
+      line-height: 1.8;
+      background: var(--theme-background);
       color: var(--theme-color);
     }
+
     h1, h2, h3 {
       margin-top: 2em;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3em;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.4em;
     }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 4px solid #42b983;
+      padding: 1em;
+      margin: 1.5em 0;
+    }
+
     code {
-      background: #f4f4f4;
+      background: #f2f2f2;
       padding: 0.2em 0.4em;
       border-radius: 4px;
+      font-size: 90%;
     }
-    pre code {
-      background: #1e1e1e;
-      color: #dcdcdc;
-      padding: 1em;
+
+    pre > code {
+      background: #1e1e1e !important;
+      color: #f8f8f2;
       border-radius: 6px;
-      overflow-x: auto;
-      display: block;
+      font-size: 14px;
+      padding: 1em;
     }
+
     .sidebar {
       font-size: 15px;
     }
@@ -44,7 +56,6 @@
 <body>
   <div id="app">加载中...</div>
 
-  <!-- Docsify 配置 -->
   <script>
     window.$docsify = {
       name: '📘 算法模板',
@@ -65,7 +76,8 @@
         renderer: {
           ...window.markedKatex()
         }
-      }
+      },
+      plugins: []
     }
   </script>
 
@@ -82,7 +94,15 @@
   <script src="https://cdn.jsdelivr.net/npm/marked@5.0.2/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@3.0.1/lib/index.umd.min.js"></script>
 
-  <!-- Giscus 评论系统 -->
+  <!-- 提示框插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts"></script>
+  <script>
+    window.$docsify.plugins = [].concat(window.$docsify.plugins || [], [
+      window.FlexibleAlerts.create()
+    ]);
+  </script>
+
+  <!-- Giscus 评论系统（可选） -->
   <script src="https://giscus.app/client.js"
           data-repo="wlwhonest/algorithm-docs"
           data-repo-id="R_kgDOO5Dcjw"
@@ -98,5 +118,6 @@
           crossorigin="anonymous"
           async>
   </script>
+
 </body>
 </html>
