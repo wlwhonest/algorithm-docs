@@ -113,7 +113,32 @@
           ...window.markedKatex()
         }
       },
-      plugins: []
+      plugins: [],
+      doneEach() {
+      const comment = document.getElementById('giscus-container');
+      if (comment) comment.remove();
+
+      const giscus = document.createElement('script');
+      giscus.src = "https://giscus.app/client.js";
+      giscus.setAttribute("data-repo", "wlwhonest/algorithm-docs");
+      giscus.setAttribute("data-repo-id", "R_kgDOO5Dcjw");
+      giscus.setAttribute("data-category", "General");
+      giscus.setAttribute("data-category-id", "DIC_kwDOO5Dcj84CrR_K");
+      giscus.setAttribute("data-mapping", "pathname");
+      giscus.setAttribute("data-reactions-enabled", "1");
+      giscus.setAttribute("data-theme", "preferred_color_scheme");
+      giscus.setAttribute("data-lang", "zh-CN");
+      giscus.setAttribute("data-input-position", "bottom");
+      giscus.crossOrigin = "anonymous";
+      giscus.async = true;
+
+      const container = document.createElement('div');
+      container.id = 'giscus-container';
+      container.style = 'margin-top: 3em; padding-top: 1em; border-top: 1px solid #eee;';
+
+      container.appendChild(giscus);
+      document.querySelector('.content').appendChild(container);
+    }
     }
   </script>
 
@@ -138,24 +163,6 @@
     ]);
   </script>
 
-  <!-- 新增：评论容器 -->
-  <div id="giscus-container">
-    <script src="https://giscus.app/client.js"
-            data-repo="wlwhonest/algorithm-docs"
-            data-repo-id="R_kgDOO5Dcjw"
-            data-category="General"
-            data-category-id="DIC_kwDOO5Dcj84CrR_K"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="bottom"
-            data-theme="preferred_color_scheme"
-            data-lang="zh-CN"
-            crossorigin="anonymous"
-            async>
-    </script>
-  </div>
 
 </body>
 </html>
