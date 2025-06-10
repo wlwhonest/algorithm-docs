@@ -5,3 +5,6 @@
   * [Dijkstra](templates/dijkstra.md)
   * [Floyd](templates/floyd.md)
   * [KMP](templates/kmp.md)
+
+* 📚 题单导航
+  * [算法模板汇总](catalog/README.md)
