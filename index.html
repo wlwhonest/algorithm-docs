@@ -7,10 +7,9 @@
 
   <!-- 样式与主题 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
 
-  <!-- 自定义美化样式 -->
   <style>
     body {
       font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -19,19 +18,16 @@
       background-color: var(--theme-background);
       color: var(--theme-color);
     }
-
     h1, h2, h3 {
       margin-top: 2em;
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.3em;
     }
-
     code {
       background: #f4f4f4;
       padding: 0.2em 0.4em;
       border-radius: 4px;
     }
-
     pre code {
       background: #1e1e1e;
       color: #dcdcdc;
@@ -40,7 +36,6 @@
       overflow-x: auto;
       display: block;
     }
-
     .sidebar {
       font-size: 15px;
     }
@@ -49,38 +44,45 @@
 <body>
   <div id="app">加载中...</div>
 
+  <!-- Docsify 配置 -->
   <script>
     window.$docsify = {
-      name: '算法模板',
+      name: '📘 算法模板',
       repo: 'wlwhonest/algorithm-docs',
-      loadSidebar: false,
+      loadSidebar: true,
       subMaxLevel: 2,
       themeable: {
         readyTransition: true,
         responsiveTables: true
       },
-      search: 'auto',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索题解/模板...',
+        noData: '找不到结果 😢',
+      },
       markdown: {
         renderer: {
-          code: window.markedKatex()
+          ...window.markedKatex()
         }
       }
     }
   </script>
 
-  <!-- 主库 -->
+  <!-- 主库和插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-
-  <!-- 插件增强 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/marked-katex-extension/dist/katex.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/docsify-themeable.min.js"></script>
 
-  <!-- 评论系统 Giscus -->
+  <!-- Katex 支持 -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@5.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@3.0.1/lib/index.umd.min.js"></script>
+
+  <!-- Giscus 评论系统 -->
   <script src="https://giscus.app/client.js"
           data-repo="wlwhonest/algorithm-docs"
           data-repo-id="R_kgDOO5Dcjw"
